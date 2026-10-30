@@ -1,0 +1,143 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-display: var(--font-archivo), 'Arial Narrow', system-ui, sans-serif;
+  --font-sans: var(--font-plex-sans), system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+
+  /* Deep navy: primary surfaces and text */
+  --color-navy-950: #06121f;
+  --color-navy-900: #0a1c2e;
+  --color-navy-800: #10293f;
+  --color-navy-700: #1a3a55;
+  --color-navy-500: #3f6077;
+
+  /* Restrained teal: links, rules, secondary emphasis */
+  --color-teal-700: #155a5a;
+  --color-teal-600: #1c6e6e;
+  --color-teal-300: #7cc4c0;
+  --color-teal-100: #dceeed;
+
+  /* Off-white paper backgrounds */
+  --color-paper: #f6f4ef;
+  --color-paper-2: #ece9e1;
+  --color-rule: #d6d2c7;
+
+  --color-ink: #0a1c2e;
+  --color-muted: #4a5866;
+
+  /* Safety orange: small accents and focus only */
+  --color-signal: #e5600f;
+  --color-signal-dark: #b34404;
+
+  --container-site: 76rem;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 6rem;
+  }
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    text-rendering: optimizeLegibility;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-signal);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  ::selection {
+    background: var(--color-teal-100);
+    color: var(--color-ink);
+  }
+}
+
+@layer components {
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .prose-ndel > * + * {
+    margin-top: 1.1em;
+  }
+  .prose-ndel h2 {
+    font-size: 1.6rem;
+    margin-top: 1.8em;
+  }
+  .prose-ndel h3 {
+    font-size: 1.25rem;
+    margin-top: 1.5em;
+  }
+  .prose-ndel ul {
+    list-style: square;
+    padding-left: 1.25rem;
+  }
+  .prose-ndel ol {
+    list-style: decimal;
+    padding-left: 1.25rem;
+  }
+  .prose-ndel li::marker {
+    color: var(--color-teal-600);
+  }
+  .prose-ndel a {
+    color: var(--color-teal-700);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .prose-ndel blockquote {
+    border-left: 3px solid var(--color-signal);
+    padding-left: 1rem;
+    color: var(--color-muted);
+  }
+}
+
+/*
+ * Section entrances: CSS scroll-driven animation, so content is always
+ * rendered visible and simply stays static where unsupported or when the
+ * visitor prefers reduced motion. No JavaScript is involved.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 40%;
+    }
+  }
+}
+
+@keyframes reveal-rise {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media print {
+  .reveal {
+    animation: none !important;
+  }
+}

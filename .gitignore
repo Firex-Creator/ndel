@@ -1,0 +1,10 @@
+node_modules
+.next
+.env
+.env.local
+.local
+media
+private-uploads
+documents
+*.tsbuildinfo
+next-env.d.ts

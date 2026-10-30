@@ -1,0 +1,56 @@
+{
+  "name": "ndel-website",
+  "version": "0.1.0",
+  "private": true,
+  "description": "NDEL corporate website and enquiry-management proposal demonstration (Metachain Software).",
+  "type": "module",
+  "scripts": {
+    "db:start": "node scripts/dev-db.mjs",
+    "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
+    "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
+    "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
+    "lint": "tsc --noEmit",
+    "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
+    "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
+    "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
+    "migrate": "cross-env NODE_OPTIONS=--no-deprecation payload migrate",
+    "seed": "cross-env NODE_OPTIONS=--no-deprecation payload run src/seed/index.ts",
+    "verify": "node scripts/verify.mjs"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "dependencies": {
+    "@payloadcms/db-postgres": "^3.92.1",
+    "@payloadcms/email-nodemailer": "^3.92.1",
+    "@payloadcms/next": "^3.92.1",
+    "@payloadcms/richtext-lexical": "^3.92.1",
+    "@payloadcms/storage-s3": "^3.92.1",
+    "@payloadcms/ui": "^3.92.1",
+    "cross-env": "^10.1.0",
+    "graphql": "^16.14.2",
+    "motion": "^14.9.0",
+    "next": "^16.4.3",
+    "payload": "^3.92.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "server-only": "^0.0.1",
+    "sharp": "^0.35.5",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "embedded-postgres": "^17.10.0-beta.17",
+    "playwright": "^1.64.1",
+    "postcss": "^8.5.32",
+    "sass": "^1.107.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.3"
+  },
+  "overrides": {
+    "dompurify": "3.4.17"
+  }
+}
