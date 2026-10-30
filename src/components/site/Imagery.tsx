@@ -108,7 +108,7 @@ export function ImagePlaceholder({
 }) {
   return (
     <figure
-      className={`relative flex h-full min-h-48 w-full flex-col justify-end overflow-hidden bg-navy-800 text-paper ${className}`}
+      className={`relative flex w-full flex-col justify-end overflow-hidden bg-navy-800 text-paper ${className}`}
     >
       <svg
         viewBox="0 0 400 220"
